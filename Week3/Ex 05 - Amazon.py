@@ -23,23 +23,28 @@ python = {"autor": "Erric Mathes",
         "price": 20
         }
 
-
 books_list =  Java, python
-
 
 print (books_list)
 
-
 def calculate_total (books_list ):
-
-    
-    for i in books_list :
+    total_price = 0   
+    for book in books_list : 
+                      
+        total_price =+ book["price"] 
         
-        print (books_list.autor[i])
+    return total_price
     
+def calculate_shiping (books_list ):
+  
+    if calculate_total (books_list ) < 100:
+        
+        return " Shipping id freee "
+    else:
+        return " Shiping is 3.99"
 
-
-calculate_total( books_list )  
+print( calculate_total( books_list )  )
+print( calculate_shiping (books_list ) )
     
  
 
