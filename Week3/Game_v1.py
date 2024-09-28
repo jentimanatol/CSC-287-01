@@ -1,10 +1,9 @@
 
-from ntpath import join
+
 import os
-
-
-
-
+matrix = [['1', '2', '3'],
+          ['4', '5', '6'],
+          ['7', '8', '9']]
 #----------------------------------------------------------------
 
 def test_matrix_operation(matrix):
@@ -97,10 +96,13 @@ def if_same_diagonal(matrix):
 
 def reset_matrix(matrix):
     
-    matrix = [['1', '2', '3'],
-              ['4', '5', '6'],
-              ['7', '8', '9']]
-    
+    fresh_matrix = [['1', '2', '3'],
+                    ['4', '5', '6'],
+                    ['7', '8', '9']]
+    for col in range(3):
+         for row in range(3):
+             matrix[col][row] = fresh_matrix[col][row]
+             
     return matrix
 
 #--------------------------------------------------
@@ -130,9 +132,7 @@ def if_win(matrix):
 
 
 def start_game():
-    matrix = [['1', '2', '3'],
-          ['4', '5', '6'],
-          ['7', '8', '9']]
+  
 
     os.system('cls')
     str_input = ''
