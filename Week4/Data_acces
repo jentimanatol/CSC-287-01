@@ -1,0 +1,21 @@
+
+"""Create a Person class with three public properties:  
+first_name, last_name, and social_security_number.
+
+Create a Person object, and access the public properties.
+Now, modify these properties to use underscore, e.g. _first_name, _last_name, 
+and _social_security_number.
+Create another Person object.  Are you still able to access the protected variables? 
+Do you get PyLint warnings?
+"""
+
+class Person:
+    """ Initialise"""
+    
+    def __init__(self, first_name, last_name, social_security_number): 
+        """ Initialise"""
+        self.first_name = first_name
+        self.last_name = last_name
+        self.social_security_number = social_security_number
+        
+   
