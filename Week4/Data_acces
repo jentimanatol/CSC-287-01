@@ -31,8 +31,9 @@ person_object1 = Person( 'Anatolie ', 'Jentimir', 512548721)
 #print(person_object1.last_name)
 #print(person_object1.social_security_number)
 
+person_object2 = Person( 'George ', 'Washinghton', 5416535461)
 
 
-print(person_object1._first_name)
-print(person_object1._last_name)
-print(person_object1._social_security_number)
+print(person_object2._first_name)
+print(person_object2._last_name)
+print(person_object2._social_security_number)
