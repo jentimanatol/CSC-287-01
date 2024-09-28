@@ -1,10 +1,7 @@
 
 from ntpath import join
+import os
 
-
-matrix = [['0', '2', '3'],
-          ['4', '0', '6'],
-          ['7', '8', '0']]
 
 
 
@@ -58,7 +55,7 @@ def if_same_row(matrix):
            return True
     return False
 
-print("if_same_row= ", if_same_row(matrix))
+#print("if_same_row= ", if_same_row(matrix))
 
 #--------------------------------------------------
 
@@ -72,7 +69,7 @@ def if_same_col(matrix):
             if colon == 'xxx' or colon == '000' :
                  return True       
     return False
-print("if_same_col= ",if_same_col(matrix))
+#print("if_same_col= ",if_same_col(matrix))
 
 #--------------------------------------------------
 
@@ -94,15 +91,91 @@ def if_same_diagonal(matrix):
                  return True       
                      
     return False
-print("if_same_diagonal= ", if_same_diagonal(matrix))
+#print("if_same_diagonal= ", if_same_diagonal(matrix))
 
+#--------------------------------------------------
+
+def reset_matrix(matrix):
+    
+    matrix = [['1', '2', '3'],
+              ['4', '5', '6'],
+              ['7', '8', '9']]
+    
+    return matrix
+
+#--------------------------------------------------
+def replace_elemnt(matrix,str_input,replace ):
+    flag_element_exist = False
+    for col in range(3):
+        for row in range(3):
+            if matrix[col][row] == str_input: 
+                matrix[col][row] = replace
+                flag_element_exist = True
+    if flag_element_exist == False : 
+        print("Game Over or Player introduced wrong number.")
+        return -1
+ 
+                
+#--------------------------------------------------
+
+def if_win(matrix): 
+    if if_same_row(matrix) or  if_same_col(matrix) or if_same_diagonal(matrix): 
+        
+        return True
+    else:
+        return False
+                
 #--------------------------------------------------
 
 
 
+def start_game():
+    matrix = [['1', '2', '3'],
+          ['4', '5', '6'],
+          ['7', '8', '9']]
+
+    os.system('cls')
+    str_input = ''
+    reset_matrix(matrix)
+    print_matrix(matrix)
+    
+    while True:    
+        str_input = input ("\nPlayer X Introduce a number from 1 to 9 :")
+        if replace_elemnt(matrix,str_input,replace = 'x' ) == -1:
+            return -1
+        print_matrix(matrix)
+        if if_win(matrix): 
+            print('Player X Win ')
+            flag_win = True
+            return -1
+
+        
+       
+        str_input = input ("\nPlaer 0 (zero) Introduce a number from 1 to 9 :")
+        if replace_elemnt(matrix,str_input,replace = '0' ) == -1:
+            return -1
+        print_matrix(matrix)
+        if if_win(matrix): 
+            print('Player 0 Win ')
+            return -1
+        
+  
+#----------------------------------
+
+
+flag = True 
+while flag:
+    print("\n\nNew game \n")
+    
+    flag_win = False
+    
+    msg = input ("Pres ok to start or quit for exit ")
+   
+    if msg =='quit':
+       flag = False
+       print("aplication wasa closetd.") 
+    else : start_game()
 
 
 
-
-print_matrix(matrix)
 
