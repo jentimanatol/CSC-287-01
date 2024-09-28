@@ -5,7 +5,7 @@
 #If the number is out of bounds, inform the user and exit.
 
 
-messages = input(" introduce a number between 2 and 9")
+messages = input(" introduce a number between 2 and 9 \n ")
 number = int(messages)
 
 matrix = []
