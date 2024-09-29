@@ -15,8 +15,8 @@ class Ship:
         to_string = ''
         for container in self.containers:
             to_string += container.describe()
-        print(to_string)
-        return f" Ship with identification: {self.ship_id} contain {to_string} " # [ for box in self.boxes: box.describe() ] #research whay do not allow foor loop
+        #print(to_string)
+        return f" Ship with identification: {self.ship_id} carry  {to_string} " # [ for box in self.boxes: box.describe() ] #research whay do not allow foor loop
         
         
         

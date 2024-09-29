@@ -1,8 +1,11 @@
 from box import Box
 class Container:
-    def __init__(self,container_id):
+    def __init__(self,container_id, container_type, container_size):
         """initializate container classs"""
         self.container_id = container_id
+        self.container_type = container_type
+        self.container_size = container_size
+        
         self.boxes = []
         
     def add_box_to_container(self, box):
@@ -16,8 +19,8 @@ class Container:
         to_string = ''
         for box in self.boxes:
             to_string += box.describe()
-        print(to_string,"\n")
-        return f" Container with id number: {self.container_id} contain {to_string} " 
+        #print(to_string,"\n")
+        return f"container with id number: {self.container_id}, container tipe: {self.container_type}, size: {self.container_size} contain: {to_string} " 
         
         
     

@@ -7,9 +7,8 @@ from port import Port
 television_box1 = Box("sony o led 55")
 television_box2 = Box("sony Q led 65")
 
-#create container 
-
-television_container = Container("tv_container")
+#create container with : container_id number , container_type (moisture profe , refrigerated, open side), container_size (full, half, quater)):
+television_container = Container("tv's_container","moisture profe", "full size")
 #add boxes in container 
 television_container.add_box_to_container(television_box1)
 television_container.add_box_to_container(television_box2)
@@ -22,9 +21,9 @@ containers_ship1 = Ship("Cargo 2015")
 containers_ship1.add_container_toSheep(television_container)
 
 
-#CREATE A PORT 
+#CREATE A PORT with name , id and max dept in feet
 
-atlantic_port1 = Port("Boston Harbor")
+atlantic_port1 = Port("Boston Harbor", 2356, 25)
 
 #add ship to the port
 atlantic_port1.add_ship_to_port(containers_ship1)
