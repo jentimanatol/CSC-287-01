@@ -1,0 +1,7 @@
+from shape import Shape
+from circle import Circle
+
+circle = Circle(4)
+
+print("Area:", circle.area())
+print("Perimeter:", circle.perimeter())

@@ -137,9 +137,12 @@ def start_game():
     os.system('cls')
     str_input = ''
     reset_matrix(matrix)
+
     print_matrix(matrix)
     
     while True:    
+
+# if board [num -1] in ['x','0']: print('invalid data')
         str_input = input ("\nPlayer X Introduce a number from 1 to 9 :")
         if replace_elemnt(matrix,str_input,replace = 'x' ) == -1:
             return -1
