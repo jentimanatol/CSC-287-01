@@ -17,9 +17,12 @@ posts = r.json()
 
 vweather = posts['weather']
 
-print ( vweather[0],['astronomy'],'avgtempC')
+#print ( vweather[0])
 
-     #  .'astronomy'.'avgtempC' )
+
+ print ('weatherIconUrl': [{'value': ''}])
+
+
 
 
 
