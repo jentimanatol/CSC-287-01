@@ -50,7 +50,6 @@ class AlienInvasion:
             self._update_enemy_bullets()
             self._check_collisions()
             self._update_screen()
-            self._debug_ship_position()  # Add debug statement
             self.clock.tick(60)
         joystick_thread.join()
 
@@ -145,17 +144,10 @@ class AlienInvasion:
         """Handle the game over condition."""
         self.running = False
         print("Game Over! Restarting...")
-        self._reset_game()  # Call the reset method
-
-    def _reset_game(self):
-        """Reset the game state."""
+        self.__init__()  # Restart the game
         self.ship.center_ship()  # Center the ship
-        self.bullets.empty()  # Clear all bullets
-        self.enemy_bullets.empty()  # Clear all enemy bullets
         self.last_fire_time = 0  # Reset the firing state
         self.previous_button_state = 0  # Reset the button state
-        self.joystick_data = {'x': 0, 'y': 0, 'button': 0}  # Reset joystick data
-        self.running = True  # Restart the game loop
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
@@ -168,12 +160,6 @@ class AlienInvasion:
         for enemy_ship in self.enemy_ships.sprites():
             enemy_ship.blitme()
         pygame.display.flip()
-
-    def _debug_ship_position(self):
-        """Print the ship's position and movement flags for debugging."""
-        print(f"Ship position: x={self.ship.x}, y={self.ship.y}")
-        print(f"Moving right: {self.ship.moving_right}, Moving left: {self.ship.moving_left}")
-        print(f"Moving up: {self.ship.moving_up}, Moving down: {self.ship.moving_down}")
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
