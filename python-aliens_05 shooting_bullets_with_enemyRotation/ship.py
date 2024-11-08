@@ -60,7 +60,7 @@ class Ship:
         self.rect.y = self.y
 
         # Rotate the image
-        self.image = pygame.transform.rotate(self.original_image, -self.angle + 90)
+        self.image = pygame.transform.rotate(self.original_image, -self.angle)
         self.rect = self.image.get_rect(center=self.rect.center)
 
         # Debug statement to check the ship's angle
