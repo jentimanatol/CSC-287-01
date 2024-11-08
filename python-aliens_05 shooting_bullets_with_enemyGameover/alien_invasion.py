@@ -39,8 +39,8 @@ class AlienInvasion:
 
     def run_game(self):
         """Start the main loop for the game."""
-        joystick_thread = threading.Thread(target=self._read_joystick_data)
-        joystick_thread.start()
+        self.joystick_thread = threading.Thread(target=self._read_joystick_data)
+        self.joystick_thread.start()
         while self.running:
             self._check_events()
             self._update_ship()
@@ -52,7 +52,7 @@ class AlienInvasion:
             self._update_screen()
             self._debug_ship_position()  # Add debug statement
             self.clock.tick(60)
-        joystick_thread.join()
+        self.joystick_thread.join()
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
@@ -71,6 +71,7 @@ class AlienInvasion:
                 self.joystick_data['x'] = int(parts[0].split(':')[1].strip())
                 self.joystick_data['y'] = int(parts[1].split(':')[1].strip())
                 self.joystick_data['button'] = int(parts[2].split(':')[1].strip())
+                print(f"Joystick data read: {self.joystick_data}")  # Debug statement
 
     def _update_ship(self):
         """Update the ship's position based on joystick data."""
@@ -78,20 +79,23 @@ class AlienInvasion:
         y = self.joystick_data['y']
         button = self.joystick_data['button']
         
-        if x < 400:
+        # Define dead zone range
+        dead_zone = 100
+
+        if x < (512 - dead_zone):
             self.ship.moving_left = True
             self.ship.moving_right = False
-        elif x > 600:
+        elif x > (512 + dead_zone):
             self.ship.moving_right = True
             self.ship.moving_left = False
         else:
             self.ship.moving_left = False
             self.ship.moving_right = False
 
-        if y < 400:
+        if y < (512 - dead_zone):
             self.ship.moving_up = True
             self.ship.moving_down = False
-        elif y > 600:
+        elif y > (512 + dead_zone):
             self.ship.moving_down = True
             self.ship.moving_up = False
         else:
@@ -106,6 +110,9 @@ class AlienInvasion:
         
         # Update the previous button state
         self.previous_button_state = button
+
+        # Debug statement to check joystick data
+        print(f"Joystick data: x={x}, y={y}, button={button}")
 
     def _fire_bullet(self):
         """Create a new bullet and add it to the bullets group."""
@@ -145,16 +152,23 @@ class AlienInvasion:
         """Handle the game over condition."""
         self.running = False
         print("Game Over! Restarting...")
+        self.joystick_thread.join()  # Wait for the joystick thread to finish
         self._reset_game()  # Call the reset method
 
     def _reset_game(self):
         """Reset the game state."""
         self.ship.center_ship()  # Center the ship
+        print(f"Ship centered at: x={self.ship.x}, y={self.ship.y}")  # Debug statement
         self.bullets.empty()  # Clear all bullets
         self.enemy_bullets.empty()  # Clear all enemy bullets
         self.last_fire_time = 0  # Reset the firing state
         self.previous_button_state = 0  # Reset the button state
-        self.joystick_data = {'x': 0, 'y': 0, 'button': 0}  # Reset joystick data
+        self.joystick_data = {'x': 512, 'y': 512, 'button': 0}  # Reset joystick data to center
+        print(f"Joystick data reset to: {self.joystick_data}")  # Debug statement
+
+        # Restart the joystick thread
+        self.joystick_thread = threading.Thread(target=self._read_joystick_data)
+        self.joystick_thread.start()
         self.running = True  # Restart the game loop
 
     def _update_screen(self):
