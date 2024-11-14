@@ -13,8 +13,8 @@ class Bird(Sprite):
 
         # Load the bird images and get their rects.
         self.images = [
-            pygame.image.load('C:\\BHCC\\python\\CSC-287-01\\starter_game\\assets\\bird\\bird_0.png'),
-            pygame.image.load('C:\\BHCC\\python\\CSC-287-01\\starter_game\\assets\\bird\\bird_1.png')
+            pygame.image.load('assets\\bird\\bird_0.png'),
+            pygame.image.load('assets\\bird\\bird_1.png')
         ]
         self.images = [pygame.transform.scale(image, (self.settings.bird_width, self.settings.bird_height)) for image in self.images]
         self.image_index = 0
