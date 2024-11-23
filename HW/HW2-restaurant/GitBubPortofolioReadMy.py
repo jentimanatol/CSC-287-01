@@ -1,4 +1,8 @@
 
+
+import os
+
+readme_content = """
 # Restaurant Management System
 
 Welcome to the Restaurant Management System project! This project is designed to help manage various aspects of a restaurant, including menu items, employees, orders, and tables. It's a great addition to your portfolio and showcases your skills in object-oriented programming with Python.
@@ -147,3 +151,10 @@ If you'd like to contribute to this project, please fork the repository and use 
 If you have any questions or feedback, feel free to reach out to me at [github.com/jentimanatol](https://github.com/jentimanatol).
 
 Happy coding!
+"""
+
+# Write the README.md file
+with open("C:\\BHCC\\python\\CSC-287-01\\HW\\HW2-restaurant\\README.md", "w") as readme_file:
+    readme_file.write(readme_content)
+
+print("README.md file has been created successfully!")
