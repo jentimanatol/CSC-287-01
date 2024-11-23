@@ -83,6 +83,7 @@ for name, tables in restaurants:
     customer = Customer("Jane Smith")
     order = Order(customer, table_number=1)
     order.add_item(menu_items[name][0])  # Add the first menu item to the order
+    order.add_item(menu_items[name][1]) 
     restaurant.add_order(order)
     restaurant_objects.append(restaurant)
 

@@ -1,0 +1,54 @@
+@startuml
+class MenuItem {
+    - name: str
+    - description: str
+    - price: float
+    + describe(): str
+}
+
+class Menu {
+    - items: List[MenuItem]
+    + add_item(item: MenuItem)
+    + describe(): str
+}
+
+class Employee {
+    - name: str
+    - position: str
+    - assigned_tables: List[int]
+    + describe(): str
+}
+
+class Customer {
+    - name: str
+    + describe(): str
+}
+
+class Order {
+    - customer: Customer
+    - table_number: int
+    - items: List[MenuItem]
+    + add_item(item: MenuItem)
+    + total_bill(): float
+    + describe(): str
+}
+
+class Restaurant {
+    - name: str
+    - menu: Menu
+    - employees: List[Employee]
+    - orders: List[Order]
+    - number_of_tables: int
+    - available_tables: int
+    + add_employee(employee: Employee)
+    + add_order(order: Order)
+    + describe(): str
+}
+
+MenuItem "1" *-- "many" Menu : contains >
+Menu "1" *-- "many" Restaurant : has >
+Employee "1" *-- "many" Restaurant : employs >
+Customer "1" *-- "many" Order : places >
+Order "1" *-- "many" Restaurant : contains >
+Restaurant "1" *-- "many" Order : has >
+@enduml

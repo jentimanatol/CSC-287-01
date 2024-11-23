@@ -1,0 +1,2 @@
+# QT
+ Qt Widgets application
