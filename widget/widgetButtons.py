@@ -1,6 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
 
+# Constants for sizes
+WINDOW_WIDTH = 400
+WINDOW_HEIGHT = 300
+PADDING = 10
+
 def quit_app():
     root.quit()
 
@@ -12,15 +17,17 @@ def show_widget():
     # Create a new window
     new_window = tk.Toplevel(root)
     new_window.title("New Window")
+    new_window.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
 
     # Add a label to the new window displaying the entered names
     label = ttk.Label(new_window, text=f"First Name: {first_name}\nLast Name: {last_name}")
-    label.pack(padx=20, pady=20)
+    label.pack(padx=PADDING, pady=PADDING)
 
 # Initialize the main window
 root = tk.Tk()
+root.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
 
-container = ttk.Frame(root)
+container = ttk.Frame(root, padding=PADDING)
 
 # Create the labels and entries
 first_label = ttk.Label(container, text="First name")
