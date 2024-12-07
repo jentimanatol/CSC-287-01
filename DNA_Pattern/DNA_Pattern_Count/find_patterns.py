@@ -14,25 +14,49 @@ def find_patterns(linked_list, k, threshold):
     """
     pattern_map = {}
     current_pattern = []
-    current_index = 0
-    dna_length = len(linked_list)
+    current = linked_list.head
 
-    # Convert linked list to list for easier access
-    linked_list_as_list = list(linked_list)
 
-    while current_index < dna_length:
-        if len(current_pattern) < k:
-            current_pattern.append(linked_list_as_list[current_index])
-        else:
-            update_pattern_map(pattern_map, current_pattern)
-            current_pattern.pop(0)
-            current_pattern.append(linked_list_as_list[current_index])
-        current_index += 1
 
+    # Populate the initial pattern with Initial usser requaREMENT LENGHT 
+    for _ in range(k):
+        if current:
+            current_pattern.append(current.data)
+            current = current.next
+
+
+
+
+
+
+
+    # Traverse the rest of the linked list
+    while current:
+        update_pattern_map(pattern_map, current_pattern)
+        current_pattern.pop(0)  # Remove the first element
+        current_pattern.append(current.data)  # Add the next element
+        current = current.next
+
+
+
+
+
+
+    # Include the last pattern
+    update_pattern_map(pattern_map, current_pattern)
+
+
+
+
+
+    # Filter patterns based on the threshold PROVIDED BY USER 
     filtered_patterns = filter_patterns(pattern_map, threshold)
     return filtered_patterns
 
-# Example usage
+
+
+
+# Example usage AND PRINT 
 if __name__ == "__main__":
     dna_sequence = "ACGTACGTACGTACGAA"
     k = 3
