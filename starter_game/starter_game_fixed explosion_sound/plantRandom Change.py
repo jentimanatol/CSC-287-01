@@ -18,7 +18,7 @@ class Plant(Sprite):
 
         # Randomly select a plant image
         plant_number = random.randint(0, 36)
-        self.image = pygame.image.load(f'C:\\BHCC\\python\\CSC-287-01\\starter_game\\assets\\plant\\plant_{plant_number}.png')
+        self.image = pygame.image.load(f'assets\\plant\\plant_{plant_number}.png')
         self.rect = self.image.get_rect()
         self.screen_rect = game.screen.get_rect()
 

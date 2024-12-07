@@ -11,7 +11,7 @@ class Plant(Sprite):
         self.screen = game.screen
 
         # Load the initial plant image
-        self.image = pygame.image.load('C:\\BHCC\\python\\CSC-287-01\\starter_game\\assets\\plant\\plant_0.png')
+        self.image = pygame.image.load('assets\\plant\\plant_0.png')
         self.rect = self.image.get_rect()
         self.screen_rect = game.screen.get_rect()
 
@@ -21,7 +21,7 @@ class Plant(Sprite):
     def update_image(self):
         """Update the plant image to a random shape."""
         plant_number = random.randint(0, 36)
-        self.image = pygame.image.load(f'C:\\BHCC\\python\\CSC-287-01\\starter_game\\assets\\plant\\plant_{plant_number}.png')
+        self.image = pygame.image.load(f'assets\\plant\\plant_{plant_number}.png')
         self.rect = self.image.get_rect()
         self.rect.midbottom = self.screen_rect.midbottom
 
