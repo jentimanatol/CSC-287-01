@@ -1,12 +1,10 @@
-# Welcome to CSC-287 Fall 2024!
 
-Welcome to the Fall 2024 semester of CSC-287! My name is **Pradeep Selvakumar**, and I will be your instructor this semester.
-
-## Course Overview
+# Course Overview  CSC-287!
 
 This course focuses on building object-oriented software applications. It is designed to cover:
 
 1. Language-agnostic fundamentals of object-oriented programming.
+
 2. Language-specific applications of object-oriented programming.
 
 To illustrate the core principles of object-oriented programming, we will specifically focus on **Python**. Python is a widely popular programming language for building large-scale software applications and is increasingly becoming the programming language of choice for data science and machine learning. Besides learning the fundamentals of Python and its OO capabilities, we will focus on using Python with the popular **PyGame**, **Matplotlib**, and **Django** frameworks.
