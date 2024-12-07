@@ -14,14 +14,17 @@ def show_widget():
     first_name = first_entry.get()
     last_name = last_entry.get()
     
-    # Create a new window
-    new_window = tk.Toplevel(root)
-    new_window.title("New Window")
-    new_window.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}")
-
-    # Add a label to the new window displaying the entered names
-    label = ttk.Label(new_window, text=f"First Name: {first_name}\nLast Name: {last_name}")
-    label.pack(padx=PADDING, pady=PADDING)
+    # Clear the existing widgets in the container
+    for widget in container.winfo_children():
+        widget.destroy()
+    
+    # Add a label displaying the entered names
+    label = ttk.Label(container, text=f"First Name: {first_name}\nLast Name: {last_name}")
+    label.grid(column=0, row=0, columnspan=2, padx=PADDING, pady=PADDING)
+    
+    # Recreate the Quit button to allow exiting the app
+    quit_button = ttk.Button(container, text="Quit", command=quit_app)
+    quit_button.grid(column=0, row=1, columnspan=2, padx=PADDING, pady=PADDING)
 
 # Initialize the main window
 root = tk.Tk()
