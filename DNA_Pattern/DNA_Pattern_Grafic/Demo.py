@@ -85,4 +85,4 @@ class DNAPatternVisualizer(tk.Tk):
 
 if __name__ == "__main__":
     app = DNAPatternVisualizer()
-    app.mainloop()
+    app.mainloop() 
