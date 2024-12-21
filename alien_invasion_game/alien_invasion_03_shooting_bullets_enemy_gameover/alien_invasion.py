@@ -63,7 +63,8 @@ class AlienInvasion:
 
     def _read_joystick_data(self):
         """Read joystick data from the serial port."""
-        ser = serial.Serial('COM3', 9600, timeout=1)
+      #  ser = serial.Serial('COM3', 9600, timeout=1)
+        ser = serial.Serial('COM5', 9600, timeout=1)
         while self.running:
             if ser.in_waiting > 0:
                 data = ser.readline().decode('utf-8', errors='ignore').rstrip()
